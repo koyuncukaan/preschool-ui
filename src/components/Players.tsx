@@ -1,6 +1,9 @@
 import { useAppSelector, useAppDispatch } from "../hooks";
+import { useGetPlayersQuery } from "../features/apiSlice";
+
 function Players() {
-  const { players } = useAppSelector((store) => store.player);
+  const { data: players } = useGetPlayersQuery();
+  // const { players } = useAppSelector((store) => store.player);
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -16,7 +19,7 @@ function Players() {
         </div>
 
         <div className="flex flex-wrap justify-center -m-4">
-          {players.map((player, index) => {
+          {players?.map((player, index) => {
             return (
               <div key={index}>
                 <div className="w-full p-2 lg:w-full md:w-full">

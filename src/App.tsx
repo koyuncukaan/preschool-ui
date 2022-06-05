@@ -4,27 +4,24 @@ import { useEffect } from "react";
 import Players from "./components/Players";
 
 function App() {
-  const { isLoading } = useAppSelector((store) => store.player);
-  const dispatch = useAppDispatch();
+  // const { isLoading } = useAppSelector((store) => store.player);
+  // const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getPlayers());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getPlayers());
+  // }, []);
 
-  if (isLoading) {
-    return (
-      <div className="loading">
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="loading">
+  //       <h1>Loading...</h1>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
       <Players />
-      {/* {players.map((player, index) => {
-        return <h3 key={index}>{player.age}</h3>;
-      })} */}
     </>
   );
 }
