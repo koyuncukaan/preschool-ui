@@ -1,9 +1,20 @@
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { useGetPlayersQuery } from "../features/apiSlice";
+import { selectPlayer } from "../features/player/playerSlice";
+import { useNavigate } from "react-router-dom";
 
 function Players() {
+  let navigate = useNavigate();
   const { data: players } = useGetPlayersQuery();
+  const dispatch = useAppDispatch();
   // const { players } = useAppSelector((store) => store.player);
+
+  const handleClick = (id: string) => {
+    dispatch(selectPlayer(id));
+    navigate(`/players/${id}`);
+    // console.log(players);
+  };
+
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -23,7 +34,10 @@ function Players() {
             return (
               <div key={index}>
                 <div className="w-full p-2 lg:w-full md:w-full">
-                  <div className="flex flex-col items-center h-full p-12 border border-yellow-500 rounded-lg ">
+                  <div
+                    onClick={() => handleClick(player._id)}
+                    className="flex flex-col items-center h-full p-12 border border-yellow-500 rounded-lg "
+                  >
                     <img
                       alt="oyuncu"
                       className="flex-shrink-0 object-cover object-center w-32 h-32 bg-gray-100 rounded-full justify-self-end"
