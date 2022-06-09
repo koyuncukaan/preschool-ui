@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Player } from "../types";
+import { Player, User, Login, Response } from "../types";
 export const apiSlice = createApi({
   reducerPath: "playerApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/v1/" }),
@@ -15,6 +15,18 @@ export const apiSlice = createApi({
             ]
           : [{ type: "Players", id: "LIST" }],
     }),
+    login: build.mutation<Response, Login>({
+      query({ email, password }) {
+        return {
+          url: `auth/login`,
+          method: "POST",
+          body: {
+            email,
+            password,
+          },
+        };
+      },
+    }),
   }),
 });
-export const { useGetPlayersQuery } = apiSlice;
+export const { useGetPlayersQuery, useLoginMutation } = apiSlice;

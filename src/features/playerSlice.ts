@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Player } from "../../types";
+import { Player } from "../types";
 
 interface PlayerState {
   // players: Player[];

@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { useGetPlayersQuery } from "../features/apiSlice";
-import { selectPlayer } from "../features/player/playerSlice";
+import { selectPlayer } from "../features/playerSlice";
 import { useNavigate } from "react-router-dom";
 
 function Players() {
